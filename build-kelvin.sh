@@ -4,9 +4,12 @@ set -eu
 cd "$(dirname "$0")"
 set -- kelvin-site-*.zip
 if [ "$#" -ne 8 ] || [ ! -f "$1" ]; then
-  echo "Expected all eight kelvin-site ZIP archives" >&2
+  echo "Expected all 8 kelvin-site ZIP archives" >&2
   exit 1
 fi
+
+# Replace generated output so cached files from older versions cannot survive.
+rm -rf ./kelvin
 
 for archive do
   unzip -q -o "$archive"
