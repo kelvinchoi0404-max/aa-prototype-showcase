@@ -1,82 +1,16 @@
 # yaml-language-server: $schema=https://render.com/schema/render.yaml.json
-# Static sites do not support or require a compute-plan field.
 services:
-- type: web
-  name: maos-classroom
-  runtime: static
-  buildCommand: unzip -o aa-sites.zip
-  staticPublishPath: ./maos
-  routes:
-  - type: rewrite
-    source: /*
-    destination: /index.html
-- type: web
-  name: kelvin-choi-studio
-  runtime: static
-  buildCommand: unzip -o aa-sites.zip
-  staticPublishPath: ./kelvin
-  headers:
-  - path: /.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /work.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /photography.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /photography/archive.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /photography/map.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /about.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /contact.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /work/wukong-duoduo.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /work/knoutcounter.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /work/ai-image-detection.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  - path: /index.rsc
-    name: Content-Type
-    value: text/x-component; charset=utf-8
-  routes:
-  - type: rewrite
-    source: /.rsc
-    destination: /index.rsc
-  - type: rewrite
-    source: /work
-    destination: /work/index.html
-  - type: rewrite
-    source: /photography
-    destination: /photography/index.html
-  - type: rewrite
-    source: /photography/archive
-    destination: /photography/archive/index.html
-  - type: rewrite
-    source: /photography/map
-    destination: /photography/map/index.html
-  - type: rewrite
-    source: /about
-    destination: /about/index.html
-  - type: rewrite
-    source: /contact
-    destination: /contact/index.html
-  - type: rewrite
-    source: /work/wukong-duoduo
-    destination: /work/wukong-duoduo/index.html
-  - type: rewrite
-    source: /work/knoutcounter
-    destination: /work/knoutcounter/index.html
-  - type: rewrite
-    source: /work/ai-image-detection
-    destination: /work/ai-image-detection/index.html
+  - type: web
+    name: maos-classroom
+    runtime: static
+    buildCommand: unzip -o aa-sites.zip
+    staticPublishPath: ./maos
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+  - type: web
+    name: kelvin-choi-studio
+    runtime: static
+    buildCommand: sh build-kelvin.sh
+    staticPublishPath: ./kelvin
