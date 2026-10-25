@@ -3,8 +3,8 @@ set -eu
 
 cd "$(dirname "$0")"
 set -- kelvin-site-*.zip
-if [ "$#" -ne 22 ] || [ ! -f "$1" ]; then
-  echo "Expected all 22 kelvin-site ZIP archives" >&2
+if [ "$#" -ne 23 ] || [ ! -f "$1" ]; then
+  echo "Expected all 23 kelvin-site ZIP archives" >&2
   exit 1
 fi
 
